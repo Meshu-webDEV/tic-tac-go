@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hashids": "^2.2.1",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.3.0",
+    "clipboard": "^2.0.6",
+    "bootstrap": "^4.4.1",
+    "dotenv": "^8.2.0",
+    "jquery": "^3.5.0",
+    "socket.io-client": "^2.3.0",
+    "velocity-animate": "^1.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
