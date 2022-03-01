@@ -1,8 +1,9 @@
 console.clear();
 const express = require("express");
 const app = express();
-var path = require("path");
-var favicon = require("serve-favicon");
+const path = require("path");
+const favicon = require("serve-favicon");
+const enforce = require("express-sslify");
 
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
@@ -15,6 +16,7 @@ server.listen(process.env.PORT || 8000, () => {
 
 // App middleware
 app.use(express.static("public"));
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.get("/", (req, res) => {
   console.log("here");
