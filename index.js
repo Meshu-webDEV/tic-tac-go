@@ -16,7 +16,7 @@ server.listen(process.env.PORT || 8000, () => {
 
 // App middleware
 app.use(express.static("public"));
-app.use(sslRedirect());
+app.use(sslRedirect.default());
 
 app.get("/", (req, res) => {
   console.log("here");

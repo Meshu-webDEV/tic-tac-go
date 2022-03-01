@@ -114,6 +114,10 @@ const disconnectedBtn = $("#disconnectedPlayAgain");
 // Clear old gameid from localStorage
 window.localStorage.removeItem("gameid");
 
+// Check current theme in localStorage
+const theme = window.localStorage.getItem("mode");
+body.attr("class", theme?.toLocaleLowerCase() || 'light');
+
 // Onload animations
 title.fadeIn(600, () => {
   subTitle.slideDown(300, () => {
