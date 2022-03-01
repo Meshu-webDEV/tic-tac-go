@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const favicon = require("serve-favicon");
-const enforce = require("express-sslify");
 const sslRedirect = require("heroku-ssl-redirect");
 
 const server = require("http").Server(app);
