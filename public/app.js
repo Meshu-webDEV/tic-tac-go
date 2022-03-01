@@ -48,7 +48,9 @@ let BothReady = 0;
 // SVG marker object
 import { Marker } from "./marker.js";
 
-const socket = io.connect("https://tic-tac-go-meshuwebdev.herokuapp.com/");
+const socket = io.connect("https://tic-tac-go-meshuwebdev.herokuapp.com/"); // Production
+// const socket = io.connect("http://localhost:8000"); // development
+
 socket.on("User-connected", (Data) => {
   //console.log(`Connected with ID: ${Data.instance}`);
   Player.instanceid = Data.instance;

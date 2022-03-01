@@ -30,7 +30,7 @@ let games = [];
 // --- Turns counter
 let turns = 0;
 
-// --- Wining coditions array
+// --- Wining conditions array
 let winConditions = [7, 56, 448, 73, 146, 292, 273, 84];
 
 /*     273                 84
@@ -293,13 +293,17 @@ io.on("connection", (socket) => {
         ) {
           console.log("Player 1 won!");
 
-          // Emit win
+          // to all clients in room1
           io.in(_gameid).emit("Winner", "You won 🔥, Congratulations!");
+          // Emit win
+          // io.to(_gameid).emit("Winner", "You won 🔥, Congratulations!");
+          // to all clients in room1 except the sender
+          socket
+            .to(_gameid)
+            .emit("Loser", "You lost 😞, Better luck next time!");
+          // io.in(_gameid).broadcast.emit();
+
           // Emit lose
-          io.in(_gameid).broadcast.emit(
-            "Loser",
-            "You lost 😞, Better luck next time!"
-          );
           // Emit game ended
           io.in(_gameid).emit("gameEnded");
 
