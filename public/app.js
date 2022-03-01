@@ -48,8 +48,8 @@ let BothReady = 0;
 // SVG marker object
 import { Marker } from "./marker.js";
 
-const socket = io.connect("https://tic-tac-go-meshuwebdev.herokuapp.com/"); // Production
-// const socket = io.connect("http://localhost:8000"); // development
+// const socket = io.connect("https://tic-tac-go-meshuwebdev.herokuapp.com/"); // Production
+const socket = io.connect("http://localhost:8000"); // development
 
 socket.on("User-connected", (Data) => {
   //console.log(`Connected with ID: ${Data.instance}`);
@@ -635,8 +635,9 @@ function Animate() {
               });
               //gameBox.css('height', '650px');
               // Show elements at the top
+
               title.css({
-                "font-size": "3em",
+                "font-size": `${window.innerWidth > 1600 ? "5em" : "3em"}`,
                 "font-family": "Cairo-regular, sans-serif",
               });
               mainHeader.css({

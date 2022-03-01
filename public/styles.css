@@ -27,8 +27,8 @@
   --grayOp1: #12181b57;
   --gray0: #f2f5f8;
   /* Grays for light scheme bg */
-  --gray1: #f4f8f8;
-  --gray2: #d3dee1;
+  --gray1: #ffffff;
+  --gray2: #f2f7ff;
   /* Grays for light scheme bg */
   --gray3: #6c7983;
   --gray4: #454e56;
@@ -43,7 +43,7 @@
   --shared-green2: #affc41;
   --shared-green3: #7fc6a4;
   --shared-green4: #d6f8d6;
-  --shared-yellow-light: #d6fc09;
+  --shared-yellow-light: #06be9c;
   --shared-yellow: #ebd13d;
   /*---- Brights */
 
@@ -53,6 +53,7 @@
 
   --shared-purple1: #55505c;
   --shared-purple2: #3c1642;
+  --shared-purple3: #8150e9;
   /*---- Darks */
 
   /* Shared colors */
@@ -61,8 +62,8 @@
   --black: #000000;
   --blue1: #f4f4f9;
   --blue2: #b8dbd9;
-  --blue3: rgb(30, 41, 47);
-  --blue4: rgb(21, 29, 34);
+  --blue3: #040b13;
+  --blue4: #060f19;
   --blue4-1: rgb(25, 34, 39);
   /* Dark theme */
 
@@ -102,12 +103,13 @@ etc..
   --footer-color: var(--gray0);
   --logo-color: var(--shared-yellow);
   --sub-title-bg: var(--header);
-  --btn-bg: var(--shared-yellow);
-  --btn-color: var(--gray7);
+  --btn-bg: var(--shared-purple3);
+  --btn-color: var(--gray0);
   --form-label-bg: var(--blue4);
   --form-label-color: var(--gray0);
   --form-textbox-bg: var(--gray1);
-  --game-id-bg: none !important;
+  --game-id-bg: #142d49 !important;
+  --game-id-copy: var(--gray0) !important;
   --generated-game-id-color: var(--gray0);
   --game-box-border-top: 1px;
   --game-id-info-svg-fill: var(--grayOp);
@@ -127,7 +129,7 @@ etc..
   --logo-color: var(--shared-yellow-light);
   --sub-title-bg: var(--header);
   --btn-bg: var(--shared-yellow-light);
-  --btn-color: var(--gray7);
+  --btn-color: var(--gray0);
   --form-label-bg: var(--gray2);
   --form-label-color: var(--gray7);
   --form-textbox-bg: #d9edf2;
@@ -147,7 +149,8 @@ html {
 }
 
 body {
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background: var(--bg) !important;
   margin: 0;
   padding: 0;
@@ -239,10 +242,11 @@ header div {
 
   /* Positioning */
   top: calc(var(--header-height) * 0.5);
-  width: 100%;
+  width: max-content;
   position: absolute;
   /* Positioning */
-
+  transform: translateX(-50%);
+  left: 50%;
   color: var(--header-text);
   z-index: 1001;
   transition: all 0.3s ease-in-out;
@@ -256,15 +260,20 @@ header div {
 }
 
 .title {
-  display: none;
-  letter-spacing: 0.2em;
-  font-family: Cairo-bold, sans-serif;
-  font-size: 4em;
+  letter-spacing: 0.1em;
+  font-family: Cairo-black, sans-serif;
+  font-size: 4.5em;
   margin-bottom: -10px;
+  font-weight: 900;
 }
 
 .title:hover {
   cursor: pointer;
+}
+
+input[type="button"] {
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .sub-title {
@@ -273,6 +282,7 @@ header div {
   padding: 0.2em;
   font-family: Cairo-light, sans-serif !important;
   font-size: 1.1em;
+  font-weight: 600;
   background: linear-gradient(
     45deg,
     var(--sub-title-bg) 0%,
@@ -290,8 +300,8 @@ header div {
   background: var(--btn-bg);
   border: none;
   color: var(--btn-color);
-  padding: 6px 15px;
-  font-size: 1.3em;
+  padding: 8px 20px;
+  font-size: 1em;
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
@@ -356,15 +366,17 @@ main {
   color: var(--header-text);
 }
 
-.input-group {
+/* .input-group {
   justify-content: center;
-}
+} */
 
 .input-group-text {
   background: var(--form-label-bg);
   color: var(--form-label-color);
   border: none;
-  width: 105px;
+  min-width: 105px;
+  max-width: max-content;
+  height: 100%;
 }
 
 .form-control {
@@ -500,17 +512,18 @@ main {
   align-items: center;
   justify-items: center;
   width: 2.5em;
+  height: 2.5em;
   padding: 0.5em;
   opacity: 0.2;
   transition-duration: 0.3s;
 }
 
 .red {
-  background: #ff0000;
+  background: #fa3278;
 }
 
 .yellow {
-  background: #ffff00;
+  background: #25e0be;
 }
 
 .blue {
@@ -518,7 +531,7 @@ main {
 }
 
 .purple {
-  background: #800080;
+  background: #8150e9;
 }
 
 #type-X:hover,
@@ -568,7 +581,7 @@ main {
   border: none;
   color: var(--btn-color);
   padding: 6px 15px;
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
@@ -644,10 +657,10 @@ main {
   color: var(--header-text);
   font-size: 1em;
   position: absolute;
-  padding: 0.7em;
+  padding: 1.4em 0.7em;
   left: 50%;
   transform: translate(-50%, 0);
-  top: 68%;
+  top: 70%;
   transition: all 0.2 ease-in-out;
   border: none;
 }
@@ -719,11 +732,11 @@ main {
 }
 
 .marker-red {
-  fill: #ff0000;
+  fill: #fa3278;
 }
 
 .marker-yellow {
-  fill: #ffff00;
+  fill: #25e0be;
 }
 
 .marker-blue {
@@ -731,7 +744,7 @@ main {
 }
 
 .marker-purple {
-  fill: #800080;
+  fill: #8150e9;
 }
 
 /* .Xplayed svg {
@@ -805,6 +818,39 @@ main {
 }
 
 /* Responsive CSS */
+
+@media only screen and (min-width: 2000px) {
+  .title {
+    font-size: 9em;
+  }
+  .sub-title {
+    font-size: 2.3em;
+  }
+  #join-game {
+    font-size: 2em;
+  }
+  #create-game {
+    font-size: 2em;
+  }
+  .main-header {
+    top: calc(var(--header-height) * 0.8);
+  }
+  .header {
+    height: calc(var(--header-height) * 1.5);
+  }
+  .corner {
+    font-size: 1.9em;
+    top: 40px;
+    right: 80px;
+  }
+
+  .input-group-text {
+    font-size: 2em;
+    width: 100%;
+    padding-right: 1.66rem;
+    padding-left: 1.66rem;
+  }
+}
 
 @media only screen and (max-width: 992px) {
   #board-generated-game-id {
